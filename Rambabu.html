@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rambabu Chinta - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Projects Section Styles */
+        #projects {
+            background: linear-gradient(145deg, #f4f7f6, #e0e7ec);
+            padding: 80px 0;
+        }
+        #projects h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #ff006e;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                text-align: center;
+        }
+        #projects h2::after {
+                    content: '';
+                    display: block;
+                    width: 80px;
+                    height: 4px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .project-card h3 {
+                line-height: 1.2;
+                letter-spacing: -0.5px;
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #0026ff;
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+            .project-card .toggle-btn {
+                background-color: #00bcd4;
+                color: #fff;
+                padding: 8px 16px;
+                font-size: 1rem;
+                font-weight: 500;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 15px;
+            }
+
+                .project-card .toggle-btn:hover {
+                    background-color: #ff006e;
+                    transform: translateY(-2px);
+                }
+
+        .project-details {
+            display: none;
+            margin-top: 10px;
+        }
+
+            .project-details h4 {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-top: 15px;
+                color: #00bcd4;
+            }
+
+            .project-details p {
+                font-size: 1rem;
+                color: #555;
+                line-height: 1.6;
+            }
+
+            .project-details ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .project-details li {
+                font-size: 1rem;
+                color: #333;
+                line-height: 1.7;
+            }
+
+        .project-card.active .project-details {
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            border-color: #00bcd4;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+                .project-card h3 {
+                    font-size: 1.5rem;
+                }
+
+                .project-card p {
+                    font-size: 1rem;
+                }
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #b200ff;
+            /*background-color: #00ff90;*/
+            color: #fff;
+            padding: 2px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+            header h1 {
+                margin: 0;
+                text-align: center;
+                font-size: 3rem;
+                font-weight: 600;
+                color: #00bcd4;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+        /* Navigation Menu Styles */
+        nav ul.main-menu > li > a {
+            color: #fff;
+            text-decoration: none;
+            padding: 2px 3px;
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(145deg, #f4f7f6, #e0e7ec);
+            padding: 60px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .profile-image img {
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            border: 4px solid #00bcd4;
+            transition: transform 0.3s ease;
+        }
+
+            .profile-image img:hover {
+                transform: scale(1.05);
+            }
+
+        .content h3 {
+            font-size: 2rem;
+            line-height: 1;
+            letter-spacing: -0.5px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1rem;
+            line-height: 1;
+            letter-spacing: -0.5px;
+            color: #555;
+        }
+
+        /* Technologies Section Styles */
+        #technologies {
+            background: linear-gradient(145deg, #f4f7f6, #e0e7ec);
+            padding: 80px 0;
+        }
+
+            #technologies h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #ff006e;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+            }
+
+                #technologies h2::after {
+                    content: '';
+                    display: block;
+                    width: 80px;
+                    height: 4px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-category {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+            .tech-category:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+                border-color: #00bcd4;
+            }
+
+            .tech-category h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 20px;
+                position: relative;
+                display: inline-block;
+            }
+
+                .tech-category h3::after {
+                    content: '';
+                    display: block;
+                    width: 50px;
+                    height: 3px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+            .tech-category ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                .tech-category ul li {
+                    font-size: 1.1rem;
+                    color: #555;
+                    margin-bottom: 12px;
+                    padding: 10px;
+                    background-color: #f9f9f9;
+                    border-radius: 8px;
+                    transition: all 0.3s ease;
+                }
+
+                    .tech-category ul li:hover {
+                        background-color: #00bcd4;
+                        color: #fff;
+                        transform: translateX(10px);
+                    }
+
+        @media (max-width: 768px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-category {
+                padding: 20px;
+            }
+
+                .tech-category h3 {
+                    font-size: 1.5rem;
+                }
+
+                .tech-category ul li {
+                    font-size: 1rem;
+                }
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Navigation Menu Styles */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+            nav ul.main-menu > li {
+                margin: 0 15px;
+            }
+
+                nav ul.main-menu > li > a {
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 2px 5px;
+                    display: block;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    border-radius: 5px;
+                }
+
+                    nav ul.main-menu > li > a:hover {
+                        background-color: #00bcd4;
+                        color: #2c3e50;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    }
+
+        /* Section Styles */
+        .section {
+            margin-top: 3%;
+            padding: 60px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ff006e;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(145deg, #f4f7f6, #e0e7ec);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .profile-image img {
+            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            border: 5px solid #00bcd4;
+            transition: transform 0.3s ease;
+        }
+
+            .profile-image img:hover {
+                transform: scale(1.05);
+            }
+
+        .content h3 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Section Styles */
+        #skills {
+            background: linear-gradient(145deg, #fff, #f4f7f6);
+            padding: 80px 0;
+        }
+
+            #skills h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #ff006e;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                text-align: center;
+            }
+
+                #skills h2::after {
+                    content: '';
+                    display: block;
+                    width: 80px;
+                    height: 4px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+            .skill-category:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+                border-color: #00bcd4;
+            }
+
+            .skill-category h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 20px;
+                position: relative;
+                display: inline-block;
+            }
+
+                .skill-category h3::after {
+                    content: '';
+                    display: block;
+                    width: 50px;
+                    height: 3px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+            .skill-item p {
+                font-size: 1.1rem;
+                color: #555;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .progress-bar .progress {
+                height: 100%;
+                background-color: #00bcd4;
+                border-radius: 10px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: width 1s ease;
+            }
+
+                .progress-bar .progress::after {
+                    content: attr(data-progress);
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 0.8rem;
+                    color: #fff;
+                }
+
+        @keyframes progressAnimation {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: var(--progress-width);
+            }
+        }
+
+        .progress-bar .progress {
+            animation: progressAnimation 1.5s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-category {
+                padding: 20px;
+            }
+
+                .skill-category h3 {
+                    font-size: 1.5rem;
+                }
+
+            .skill-item p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Technologies Section */
+        #technologies {
+            background: linear-gradient(145deg, #f4f7f6, #e0e7ec);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tech-category {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .tech-category:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .tech-category h3 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 20px;
+            }
+
+            .tech-category ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .tech-category ul li {
+                    margin-bottom: 10px;
+                    font-size: 1.1rem;
+                    color: #555;
+                }
+
+        /* Experience Section Styles */
+        #experience {
+            background: linear-gradient(145deg, #fff, #f4f7f6);
+            padding: 80px 0;
+        }
+
+            #experience h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #ff006e;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                text-align: center;
+            }
+
+                #experience h2::after {
+                    content: '';
+                    display: block;
+                    width: 80px;
+                    height: 4px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .experience-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .experience-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(0, 188, 212, 0.1), rgba(0, 188, 212, 0.05));
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .experience-card:hover::before {
+                opacity: 1;
+            }
+
+            .experience-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+                border-color: #00bcd4;
+            }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .duration {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .payroll {
+            font-size: 1rem;
+            color: #00bcd4;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .projects {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+            .projects li {
+                font-size: 1rem;
+                color: #555;
+                margin-bottom: 10px;
+                padding-left: 20px;
+                position: relative;
+            }
+
+                .projects li::before {
+                    content: '▹';
+                    position: absolute;
+                    left: 0;
+                    color: #00bcd4;
+                    font-size: 1.2rem;
+                    line-height: 1.2;
+                }
+
+        @media (max-width: 768px) {
+            .experience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-card {
+                padding: 20px;
+            }
+
+            .company-name {
+                font-size: 1.3rem;
+            }
+
+            .projects li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Education Section Styles */
+        #Education {
+            background: linear-gradient(145deg, #fff, #f4f7f6);
+            padding: 80px 0;
+        }
+
+            #Education h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #ff006e;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                text-align: center;
+            }
+
+                #Education h2::after {
+                    content: '';
+                    display: block;
+                    width: 80px;
+                    height: 4px;
+                    background-color: #00bcd4;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+        .education-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+            .education-content::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(0, 188, 212, 0.1), rgba(0, 188, 212, 0.05));
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .education-content:hover::before {
+                opacity: 1;
+            }
+
+            .education-content:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+                border-color: #00bcd4;
+            }
+
+            .education-content h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 20px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .education-content p {
+                font-size: 1.1rem;
+                color: #555;
+                line-height: 1.8;
+                position: relative;
+                z-index: 2;
+            }
+
+                .education-content p strong {
+                    color: #2c3e50;
+                    font-weight: 600;
+                }
+
+        @media (max-width: 768px) {
+            .education-content {
+                padding: 20px;
+            }
+
+                .education-content h3 {
+                    font-size: 1.5rem;
+                }
+
+                .education-content p {
+                    font-size: 1rem;
+                }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+            .form-group label {
+                display: block;
+                font-size: 1rem;
+                color: #f4f7f6;
+                margin-bottom: 8px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                font-size: 1rem;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+                transition: border-color 0.3s ease, background 0.3s ease;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    border-color: #00bcd4;
+                    background: rgba(255, 255, 255, 0.2);
+                    outline: none;
+                }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 120px;
+            }
+
+        #contact {
+            background: linear-gradient(145deg, #FF6F61, #D17B6D);
+            color: #fff;
+            padding: 60px 20px; /* Reduced padding to make it more compact */
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 40px 0;
+        }
+
+            #contact h2 {
+                color: #fff;
+                font-size: 2.2rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                display: inline-block;
+            }
+
+                #contact h2::after {
+                    content: '';
+                    display: block;
+                    width: 60px;
+                    height: 4px;
+                    background-color: #fff;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+            #contact p {
+                font-size: 1rem;
+                line-height: 1.8;
+                color: #f4f7f6;
+                margin-bottom: 15px;
+            }
+
+            #contact a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s ease, transform 0.3s ease;
+                display: inline-block;
+            }
+
+                #contact a:hover {
+                    color: #FF6F61;
+                    transform: translateY(-3px);
+                }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(145deg, #2d3e50, #34495e); /* Darker and more professional gradient */
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 40px 0;
+        }
+
+            #contact h2 {
+                color: #f39c12; /* Gold color for a pop effect */
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 30px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                display: inline-block;
+            }
+
+                #contact h2::after {
+                    content: '';
+                    display: block;
+                    width: 60px;
+                    height: 4px;
+                    background-color: #f39c12; /* Match with the heading color */
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+            #contact p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #f4f7f6;
+                margin-bottom: 20px;
+            }
+
+            #contact a {
+                color: #f39c12;
+                text-decoration: none;
+                transition: color 0.3s ease, transform 0.3s ease;
+                display: inline-block;
+            }
+
+                #contact a:hover {
+                    color: #fff;
+                    transform: translateY(-3px);
+                }
+
+        /* Contact Form Styling */
+        #contactForm {
+            max-width: 400px; /* Reduced form width for a compact look */
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+            .form-group label {
+                display: block;
+                font-size: 1rem;
+                margin-bottom: 5px;
+                color: #f39c12;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                font-size: 1rem;
+                border-radius: 8px;
+                border: 1px solid #f39c12; /* Gold border color */
+                background: rgba(255, 255, 255, 0.2);
+                color: #fff;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    border-color: #f39c12;
+                    outline: none;
+                }
+
+        button {
+            padding: 12px 25px;
+            background-color: #f39c12; /* Gold button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover {
+                background-color: #e67e22; /* Darker gold on hover */
+            }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+            footer p {
+                margin: 0;
+                font-size: 1rem;
+            }
+
+        /* Hidden Class */
+        .hidden {
+            display: none;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul.main-menu > li {
+                margin: 0 5px;
+            }
+
+                nav ul.main-menu > li > a {
+                    font-size: 1rem;
+                    padding: 2px 3px;
+                }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .skills-grid, .tech-grid, .experience-grid, .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul.main-menu > li {
+                margin: 0 5px;
+            }
+
+                nav ul.main-menu > li > a {
+                    font-size: 0.9rem;
+                    padding: 6px 10px;
+                }
+
+            .profile-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills-grid, .tech-grid, .experience-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <!-- Header with Navigation Menu -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#technologies">Technologies</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#Education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="profile-image">
+                        <img src="E:\MyProfile\RambabuImage.jpeg" alt="Profile Image">
+                    </div>
+                    <div class="content">
+                        <h3 style="font-size:30px;color:#ff006e">Hello, I'm <strong>Rambabu Chinta</strong></h3>
+                        <p>
+                            A Senior Software Engineer with over 4 years of experience in the full Software Development Life Cycle (SDLC). I specialize in designing, developing, and delivering high-quality software solutions that drive business success. With a strong foundation in problem-solving and innovation, I excel in gathering requirements, analyzing complex problems, and creating efficient and scalable software systems. I'm passionate about adopting new technologies, improving processes, and mentoring teams to ensure continuous growth and excellence in development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section id="skills" class="section hidden">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <!-- Frontend Skills -->
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <div class="skill-item">
+                            <p>HTML</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 90%;" data-progress="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>CSS</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 85%;" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>JavaScript</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;" data-progress="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>Jquery</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;" data-progress="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>Bootstrap</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 85%;" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>AngularJS</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 75%;" data-progress="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <div class="skill-item">
+                            <p>ASP.NET MVC</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;" data-progress="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>.NET Core</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 85%;" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>C#</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 90%;" data-progress="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>.NET Core/Web API</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;" data-progress="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Skills -->
+                    <div class="skill-category">
+                        <h3>Database</h3>
+                        <div class="skill-item">
+                            <p>SQL Server</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 85%;" data-progress="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>Oracle</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 75%;" data-progress="70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <p>My Sql</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 75%;" data-progress="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section id="technologies" class="section hidden">
+            <div class="container">
+                <h2>Technologies</h2>
+                <div class="tech-grid">
+                    <!-- Frontend Technologies -->
+                    <div class="tech-category">
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>jQuery</li>
+                            <li>AngularJS</li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend Technologies -->
+                    <div class="tech-category">
+                        <h3>Backend</h3>
+                        <ul>
+                            <li>C#.NET</li>
+                            <li>.NET Core 3 & 6 </li>
+                            <li>ASP.NET MVC4.7 & 5</li>
+                            <li>.Net Core API  & Web API</li>
+                            <li>Entity Framework</li>
+                            <li>ADO.NET</li>
+                        </ul>
+                    </div>
+
+                    <!-- Database Technologies -->
+                    <div class="tech-category">
+                        <h3>Database</h3>
+                        <ul>
+                            <li>SQL Server</li>
+                            <li> Oracle</li>
+                            <li>T-SQL, PL/SQL</li>
+                            <li>My Sql</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section hidden">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="experience-grid">
+                    <!-- Experience Card 1 -->
+                    <div class="experience-card">
+                        <h3 class="company-name">National Informatics Center (NIC), Hyderabad</h3>
+                        <p class="payroll">Payroll: Velocis Systems Pvt. Ltd.</p>
+                        <p class="duration"><strong>Apr 2024 - Present</strong></p>
+                        <p>
+                            The SBTET Telangana website is a comprehensive digital platform designed to streamline and regulate technical education in Telangana. Managed by the State Board of Technical Education and Training (SBTET), the site provides centralized access to essential resources, including course information, exam notifications, institutional details, and student services. Built with NET MVC, AngularJS, and SQL Server technologies, the platform offers a seamless, interactive experience for students, institutions, and stakeholders, enhancing accessibility to key educational tools and information.
+                        </p>
+                    </div>
+
+                    <!-- Experience Card 2 -->
+                    <div class="experience-card">
+                        <h3 class="company-name">VolkSoft Consulting Pvt. Ltd, Secunderabad</h3>
+                        <p class="duration"><strong>Feb 2022 - Mar 2024</strong></p>
+                        <p>
+                            Volksoft Consulting Pvt. Ltd. is a leading provider of innovative technology solutions, specializing in software development, IT consulting, and digital transformation services. With a strong focus on delivering customized solutions, Volksoft helps businesses across various industries optimize their operations, enhance efficiency, and drive growth. Their expertise spans a wide range of services, including system integration, cloud computing, enterprise applications, and data analytics. Committed to excellence, Volksoft Consulting Pvt. Ltd. is dedicated to empowering organizations with cutting-edge technology to stay ahead in today’s competitive market.
+                        </p>
+
+                    </div>
+
+                    <!-- Experience Card 3 -->
+                    <div class="experience-card">
+                        <h3 class="company-name">Mavericks Business And Market Research Pvt. Ltd, Secunderabad</h3>
+                        <p class="duration"><strong>Jan 2021 - Jan 2022</strong></p>
+                        <p>Mavericks Business and Market Research Pvt. Ltd. is a dynamic firm based in Secunderabad, specializing in providing strategic business insights and market research services. With a focus on data-driven solutions, Mavericks helps businesses make informed decisions, optimize performance, and drive growth in competitive markets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Projects Section -->
+
+        <section id="projects" class="section hidden">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>SBTET-Software Suite, CCIC</h3>
+                        <button class="toggle-btn">Read More</button>
+                        <div class="project-details">
+                            <h4>Description:</h4>
+                            <p>A digital platform streamlining technical education in Telangana, offering easy access to courses, exam details, and student services.</p>
+                            <h4>Responsibilities:</h4>
+                            <ul class="projects">
+                                <li>Developed and implemented MVC screens...</li>
+                                <li>Created dynamic and responsive user interfaces...</li>
+                                <li>Integrated SQL Server for efficient database management...</li>
+                                <li>Designed and developed comprehensive sections...</li>
+                                <li>Worked on developing and enhancing online services...</li>
+                                <li>Ensured user-friendly design...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Excise Department of Telangana</h3>
+                        <button class="toggle-btn">Read More</button>
+                        <div class="project-details">
+                            <h4>Description:</h4>
+                            <p>A web application for excise licensing, revenue collection, and compliance management.</p>
+                            <h4>Responsibilities:</h4>
+                            <ul class="projects">
+                                <li>Led the full development lifecycle of a web application...</li>
+                                <li>Collaborated with cross-functional teams...</li>
+                                <li>Integrated secure payment gateways...</li>
+                                <li>Ensured strict adherence to excise laws...</li>
+                                <li>Implemented robust security measures...</li>
+                                <li>Developed comprehensive documentation...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>BizXtend</h3>
+                        <button class="toggle-btn">Read More</button>
+                        <div class="project-details">
+                            <h4>Description:</h4>
+                            <p>BizXtend operates on the Retail Loan Management System (RLMS), a core component of Micro Financial Institutions (MFI) application.</p>
+                            <h4>Responsibilities:</h4>
+                            <ul class="projects">
+                                <li>Developed MVC Project with .NET Core 6.0...</li>
+                                <li>Integrated external APIs for seamless functionality...</li>
+                                <li>Worked closely with clients for requirement gathering...</li>
+                                <li>Developed front-end and integrated back-end services...</li>
+                                <li>Published and deployed web applications...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Pragati (PTSmart Online)</h3>
+                        <button class="toggle-btn">Read More</button>
+                        <div class="project-details">
+                            <h4>Description:</h4>
+                            <p>PTSMART ONLINE (PRAGATHI) is an advanced product built on the Loan Management System (LMS), specifically designed for Micro Financial Institutions (MFIs). It focuses on micro lending loans, particularly for women with low income, offering collateral-free loans. The system facilitates flexible loan application, processing, and disbursement, which can be conducted via both physical and digital channels. PRAGATHI ensures that these loans, regardless of end use, are accessible to underserved individuals, empowering them with financial support tailored to their needs.</p>
+                            <h4>Responsibilities:</h4>
+                            <ul class="projects">
+                                <li>Developed the MVC screens based on the earlier Window Forms Application screens and Web API based on the client requirement for the tab application.</li>
+                                <li>Developed multiple connections with split databases, including a master database.</li>
+                                <li>Worked on the major development role regarding the dashboard functionality, which includes graphs, pie charts, and dynamic tables.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>KIMS CRM / KIMS Hospital</h3>
+                        <button class="toggle-btn">Read More</button>
+                        <div class="project-details">
+                            <h4>Description:</h4>
+                            <p>The KIMS Project is a small module application designed for auditing purposes in hospital management. It focuses on maintaining and providing real-time availability of rooms and floor information, accessible via both mobile and web applications.</p>
+                            <h4>Responsibilities:</h4>
+                            <ul class="projects">
+                                <li>Develop the application using MVC, Entity Data Model, and API services.</li>
+                                <li>Publish and deploy, which includes Web Application, API Services, and procedures.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Business Management Systems (BMSI)</h3>
+                        <button class="toggle-btn">Read More</button>
+                        <div class="project-details">
+                            <h4>Description:</h4>
+                            <p>The BMSI Financial Accounting System offers affordable solutions for managing government and school finances, ensuring compliance with accounting standards. It provides a General Ledger for better financial insights, helping management make informed decisions. The system also includes budgeting tools to track, maintain, and plan for improved financial performance.</p>
+                            <h4>Responsibilities:</h4>
+                            <ul class="projects">
+                                <li>Worked closely with the client for requirement gathering, analysis, and development of web application user interfaces.</li>
+                                <li>Integrated the back end as per client requirements using MVC and API services.</li>
+                                <li>Published and deployed releases on IIS in client servers, including Web Application, API Services, and Procedures.</li>
+                                <li>Performed DB coding, including queries, stored procedures, functions, triggers, and indexes using SQL, and tuned queries/procedures for better runtime performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="Education" class="section hidden">
+            <div class="container">
+                <h2>Education Information</h2>
+                <div class="education-content">
+                    <h3>Bachelor of Technology (B.Tech)</h3>
+                    <p>
+                        <strong>Field of Study:</strong> Electrical and Electronics Engineering (EEE)<br>
+                        <strong>Institution:</strong> BVC Institute of Technology and Sciences, East Godavari, Andhra Pradesh<br>
+                        <strong>Graduation Year:</strong> 2020
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact Information</h2>
+                <p><strong>Name:</strong> Rambabu Chinta</p>
+                <p><strong>Address:</strong> Plot No. 24, Sai Baba Colony, Seetharampuram, Old Bowenpally, Secunderabad-500011</p>
+                <p><strong>Phone:</strong> +91 7702 040 126</p>
+                <p><strong>Email:</strong> <a href="mailto:ramvarma341@gmail.com">ramvarma341@gmail.com</a></p>
+
+                <!-- Contact Form -->
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Your Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Enter your message"></textarea>
+                    </div>
+                    <button type="submit">Send SMS</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Ram Varma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle functionality for project cards
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const projectCard = button.closest('.project-card');
+                projectCard.classList.toggle('active');
+                button.textContent = projectCard.classList.contains('active') ? 'Read Less' : 'Read More';
+            });
+        });
+
+        // Smooth scrolling and section visibility toggling
+        const sections = document.querySelectorAll('.section');
+
+        // Initially, show only the home section (or about section if home doesn't exist)
+        sections.forEach(section => {
+            if (section.id !== "about" && section.id !== "home") {
+                section.classList.add('hidden');
+            }
+        });
+
+        // Handle navigation link clicks
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1); // Remove the '#' from href
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    // Hide all sections
+                    sections.forEach(section => {
+                        section.classList.add('hidden');
+                    });
+
+                    // Show the target section
+                    targetSection.classList.remove('hidden');
+
+                    // Smooth scroll to the target section
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm')?.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert(`Thank you, ${name}! Your message has been sent.`);
+                document.getElementById('contactForm').reset();
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            if (name && phone && message) {
+                alert('Sms Service Not Working.');
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+
+    </script>
+</body>
+</html>
